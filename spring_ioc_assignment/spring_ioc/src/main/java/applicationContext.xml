@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	 xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	 <context:annotation-config/>
+
+<bean id="movie1" class="com.yash.question1.Movie">
+  <property name="movieName" value="Gadar"></property>
+</bean>	 
+<bean id="movie2" class="com.yash.question1.Movie">
+  <property name="movieName" value="Rakshabandhan"></property>
+</bean>	 
+<bean id="movie3" class="com.yash.question1.Movie">
+  <property name="movieName" value="Karthikey2"></property>
+</bean>	 
+<bean id="movie4" class="com.yash.question1.Movie">
+  <property name="movieName" value="pushpa"></property>
+</bean>	 
+
+	<bean id="cinemahall1" class="com.yash.question1.CinemaHall">
+
+   <constructor-arg value="Ionex "></constructor-arg>
+   <constructor-arg value="11:00 AM to 2:00 PM, and other timing"></constructor-arg>
+  <constructor-arg ref="movie1"></constructor-arg>
+</bean>	
+<bean id="cinemahall2" class="com.yash.question1.CinemaHall">
+   <constructor-arg value="velocity "></constructor-arg>
+   <constructor-arg value="11:00 AM to 1:30 PM and other timing"></constructor-arg>
+  <constructor-arg ref="movie2"></constructor-arg>
+</bean>	 <bean id="cinemahall3" class="com.yash.question1.CinemaHall">
+   <constructor-arg value="Ionex "></constructor-arg>
+   <constructor-arg value="11:00 AM to 1:30 PM and other timing"></constructor-arg>
+  <constructor-arg ref="movie3"></constructor-arg>
+</bean>	 <bean id="cinemahall4" class="com.yash.question1.CinemaHall">
+   <constructor-arg value="amanora "></constructor-arg>
+   <constructor-arg value="11:00 AM to 2:00 PM, and other timing"></constructor-arg>
+  <constructor-arg ref="movie4"></constructor-arg>
+</bean>	 
+	<bean id="city1" class="com.yash.question1.City"  autowire="constructor">
+   <constructor-arg value="Pune"></constructor-arg>
+<constructor-arg ref="cinemahall1"></constructor-arg>  
+</bean>
+	<bean id="city2" class="com.yash.question1.City"  autowire="constructor">
+   <constructor-arg value="Mumbai"></constructor-arg>
+<constructor-arg ref="cinemahall2"></constructor-arg>  
+</bean>	 
+	<bean id="city3" class="com.yash.question1.City"  autowire="constructor">
+   <constructor-arg value="Karad"></constructor-arg>
+<constructor-arg ref="cinemahall3"></constructor-arg>  
+</bean> 
+	<bean id="city4" class="com.yash.question1.City"  autowire="constructor">
+   <constructor-arg value="Indore"></constructor-arg>
+<constructor-arg ref="cinemahall4"></constructor-arg>  
+</bean>
+<bean id="shape" class="com.yash.question2.ShapeBean"></bean>
+<bean id="triangle" class="com.yash.question2.ShapeBean" factory-method="getTriangle" factory-bean="shape"></bean>	
+<bean id="rectangle" class="com.yash.question2.ShapeBean" factory-method="getRectangle" factory-bean="shape"></bean>	
+<bean id="parralellogram" class="com.yash.question2.ShapeBean" factory-method="getParallelogram" factory-bean="shape"></bean>	
+<bean id="const" class="com.yash.question3.ConstructorMessage">
+   <constructor-arg value="Hello I am in constructor "></constructor-arg>
+</bean>
+	<bean id="setter" class="com.yash.question4.SetterMessage" autowire="byType">
+	 <property name="message" value="Hello welcome fatima"></property>
+</bean>	 
+<bean id="EmployeeBean" class="com.yash.question5.EmployeeBeanFactory"></bean>
+<bean id="manager" class="com.yash.question5.EmployeeBeanFactory" factory-method="getManager" factory-bean="EmployeeBean"></bean>
+<bean id="supervisor" class="com.yash.question5.EmployeeBeanFactory" factory-method="getSupervisor" factory-bean="EmployeeBean"></bean>
+<bean id="clerk" class="com.yash.question5.EmployeeBeanFactory" factory-method="getClerk" factory-bean="EmployeeBean"></bean>
+<bean id="engineTwoWheeler" class="com.yash.question6.Engine">
+<constructor-arg value="2 Wheeler Engine"></constructor-arg>
+<constructor-arg value="Petrol Engine"></constructor-arg>
+<constructor-arg value="20 cc"></constructor-arg>
+</bean>
+<bean id="bike" class="com.yash.question6.Vehicle" autowire="constructor">
+<constructor-arg value="bike"></constructor-arg>
+<constructor-arg value="2 wheeler"></constructor-arg>
+<constructor-arg value="15 avg"></constructor-arg>
+<constructor-arg value="900000"></constructor-arg>
+<constructor-arg ref="engineTwoWheeler"></constructor-arg>
+</bean>
+<bean id="fourWheelerEngine" class="com.yash.question6.Engine">
+<constructor-arg value="4 Wheeler Engine"></constructor-arg>
+<constructor-arg value="diesel Engine"></constructor-arg>
+<constructor-arg value="25 cc"></constructor-arg>
+</bean>
+<bean id="car" class="com.yash.question6.Vehicle" autowire="constructor">
+<constructor-arg value="Car"></constructor-arg>
+<constructor-arg value="4 wheeler"></constructor-arg>
+<constructor-arg value="22 avg"></constructor-arg>
+<constructor-arg value="300000"></constructor-arg>
+<constructor-arg ref="fourWheelerEngine"></constructor-arg>
+</bean>
+
+</beans>
