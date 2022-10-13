@@ -1,0 +1,28 @@
+
+
+
+
+//Query
+1.select * from CustomerDetails where Custid not in (select Custid from bill) ; 
+2.select cat.catname,bi.price from category cat inner join product prod on cat.catid = prod.catid inner join billItem bi on 
+  prod.pid=bi.pid where bi.price =(select max(price) from billitem);
+3.select cat.catname,bi.price from category cat inner join product prod on cat.catid = prod.catid inner join billItem bi
+ on prod.pid=bi.pid where bi.price =(select min(price) from billitem);
+4.select p.catid,count(bi.billitemid),c.compname from product as p inner join billitem as bi 
+  on p.pid=bi.pid inner join Company as c on c.comid=p.comid group by p.catid; 
+5.select c.Custname,b.billno,b.billdate from customerDetails as c inner join bill as b on c.Custid=b.Custid order by b.billdate; 
+6.select c.Custname,sum(price) from billitem as bi inner join bill as b on bi.billno=b.billno
+   inner join customerDetails as c on c.Custid=b.Custid group by b.Custid; 
+7 select c.compname,count(bi.billitemid) from product as p inner join billitem as bi on p.pid=bi.pid 
+  inner join Company as c on c.comid=p.comid group by p.comid;
+8 select com.compname,c.catname,count(p.pid) from product as p inner join category as c on p.catid=c.catid 
+   inner join Company as com on com.comid=p.comid group by p.catid; 
+10 select count(bi.billno),b.billdate from billitem as bi inner join bill as b on b.billno=bi.billno group by b.billdate; 
+11  select * from Product where expirydate between now() and adddate(now(), INTERVAL 15 DAY); 
+
+12 select c.Custname,count(bi.pid) from customerDetails as c inner join bill as b on c.Custid=b.Custid inner join billitem as bi
+ on b.billno= bi.billno inner join product as p on p.pid=bi.pid group by b.Custid; 
+
+13 select b.billdate,sum(bi.price) from bill as b inner join billitem as bi on b.billno= bi.billno group by b.billdate;
+
+
